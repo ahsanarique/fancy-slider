@@ -76,7 +76,7 @@ const createSlider = () => {
     const durationInput = document.getElementById("duration");
     let duration = 1000;
 
-    if (durationInput.value > 1000) {
+    if (durationInput.value > 999) {
       duration = durationInput.value;
     } else if (typeof durationInput.value !== "number") {
       alert(
@@ -155,7 +155,6 @@ search.addEventListener("keypress", (e) => {
 });
 
 // Slider event listeners and elements
-const imageList = document.querySelector(".images");
 
 function handleSlider() {
   toggleSpinner("loading-spinner-slider");
