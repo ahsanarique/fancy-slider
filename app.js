@@ -127,11 +127,13 @@ const changeSlide = (index) => {
   items[index].style.display = "block";
 };
 
+// Spinner event handler in between loading image list and slider
 function toggleSpinner(id) {
   const element = document.getElementById(id);
   element.classList.toggle("d-none");
 }
 
+// Search event listeners and elements
 const search = document.getElementById("search");
 
 searchBtn.addEventListener("click", function () {
@@ -142,6 +144,7 @@ searchBtn.addEventListener("click", function () {
   sliders.length = 0;
 });
 
+// Enter keypress event for search inputs
 search.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     document.querySelector(".main").style.display = "none";
@@ -152,8 +155,21 @@ search.addEventListener("keypress", (e) => {
   }
 });
 
+// Slider event listeners and elements
+const imageList = document.querySelector(".images");
+
 sliderBtn.addEventListener("click", function () {
-  document.querySelector(".images").style.display = "none";
+  imageList.style.display = "none";
   toggleSpinner("loading-spinner");
   createSlider();
+});
+
+// Enter keypress event to create slider
+document.addEventListener("keypress", (e) => {
+  if ((e.key = "Enter" && imageList.style.display === "block")) {
+    console.log("listening");
+    imageList.style.display = "none";
+    toggleSpinner("loading-spinner");
+    createSlider();
+  }
 });
