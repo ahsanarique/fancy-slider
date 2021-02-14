@@ -80,7 +80,7 @@ const createSlider = () => {
       duration = durationInput.value;
     } else if (typeof durationInput.value !== "number") {
       alert(
-        "Duration should be a valid number. Duration is reset to default: 1000ms (1sec)."
+        "Duration is reset to default: 1000ms (1sec). Duration should be a valid number and at least 1000ms (1sec)."
       );
       duration = 1000;
     }
@@ -136,40 +136,35 @@ function toggleSpinner(id) {
 // Search event listeners and elements
 const search = document.getElementById("search");
 
-searchBtn.addEventListener("click", function () {
+function handleSearch() {
   document.querySelector(".main").style.display = "none";
   clearInterval(timer);
   toggleSpinner("loading-spinner");
   getImages(search.value);
   sliders.length = 0;
-});
+}
+
+searchBtn.addEventListener("click", handleSearch);
 
 // Enter keypress event for search inputs
 search.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
-    document.querySelector(".main").style.display = "none";
-    clearInterval(timer);
-    toggleSpinner("loading-spinner");
-    getImages(search.value);
-    sliders.length = 0;
+    handleSearch();
   }
+  e.stopPropagation();
 });
 
 // Slider event listeners and elements
 const imageList = document.querySelector(".images");
 
-sliderBtn.addEventListener("click", function () {
-  imageList.style.display = "none";
+function handleSlider() {
   toggleSpinner("loading-spinner");
   createSlider();
-});
+}
+
+sliderBtn.addEventListener("click", handleSlider);
 
 // Enter keypress event to create slider
 document.addEventListener("keypress", (e) => {
-  if ((e.key = "Enter" && imageList.style.display === "block")) {
-    console.log("listening");
-    imageList.style.display = "none";
-    toggleSpinner("loading-spinner");
-    createSlider();
-  }
+  e.key === "Enter" ? handleSlider() : null;
 });
