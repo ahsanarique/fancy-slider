@@ -14,7 +14,7 @@ const KEY = "15674931-a9d714b6e9d654524df198e00&q";
 
 // show images
 const showImages = (images) => {
-  toggleSpinner("loading-spinner");
+  toggleSpinner("loading-spinner-search");
   imagesArea.style.display = "block";
   gallery.innerHTML = "";
   // show gallery title
@@ -50,7 +50,7 @@ const selectItem = (event, img) => {
 };
 var timer;
 const createSlider = () => {
-  toggleSpinner("loading-spinner");
+  toggleSpinner("loading-spinner-slider");
   // check slider image length
   if (sliders.length < 2) {
     alert("Select at least 2 image.");
@@ -139,7 +139,7 @@ const search = document.getElementById("search");
 function handleSearch() {
   document.querySelector(".main").style.display = "none";
   clearInterval(timer);
-  toggleSpinner("loading-spinner");
+  toggleSpinner("loading-spinner-search");
   getImages(search.value);
   sliders.length = 0;
 }
@@ -158,7 +158,7 @@ search.addEventListener("keypress", (e) => {
 const imageList = document.querySelector(".images");
 
 function handleSlider() {
-  toggleSpinner("loading-spinner");
+  toggleSpinner("loading-spinner-slider");
   createSlider();
 }
 
