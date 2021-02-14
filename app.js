@@ -14,6 +14,7 @@ const KEY = "15674931-a9d714b6e9d654524df198e00&q";
 
 // show images
 const showImages = (images) => {
+  toggleSpinner("loading-spinner");
   imagesArea.style.display = "block";
   gallery.innerHTML = "";
   // show gallery title
@@ -49,6 +50,7 @@ const selectItem = (event, img) => {
 };
 var timer;
 const createSlider = () => {
+  toggleSpinner("loading-spinner");
   // check slider image length
   if (sliders.length < 2) {
     alert("Select at least 2 image.");
@@ -66,9 +68,10 @@ const createSlider = () => {
 
   sliderContainer.appendChild(prevNext);
   document.querySelector(".main").style.display = "block";
-  // hide image aria
+  // hide image area
   imagesArea.style.display = "none";
 
+  // Duration per slide
   function getDuration() {
     const durationInput = document.getElementById("duration");
     let duration = 1000;
@@ -124,11 +127,17 @@ const changeSlide = (index) => {
   items[index].style.display = "block";
 };
 
+function toggleSpinner(id) {
+  const element = document.getElementById(id);
+  element.classList.toggle("d-none");
+}
+
 const search = document.getElementById("search");
 
 searchBtn.addEventListener("click", function () {
   document.querySelector(".main").style.display = "none";
   clearInterval(timer);
+  toggleSpinner("loading-spinner");
   getImages(search.value);
   sliders.length = 0;
 });
@@ -137,11 +146,14 @@ search.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     document.querySelector(".main").style.display = "none";
     clearInterval(timer);
+    toggleSpinner("loading-spinner");
     getImages(search.value);
     sliders.length = 0;
   }
 });
 
 sliderBtn.addEventListener("click", function () {
+  document.querySelector(".images").style.display = "none";
+  toggleSpinner("loading-spinner");
   createSlider();
 });

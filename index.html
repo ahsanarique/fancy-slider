@@ -11,25 +11,27 @@
 
     <!-- Bootstrap CSS -->
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
       crossorigin="anonymous"
     />
+
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
       integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
       crossorigin="anonymous"
     />
+
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <div class="container">
-      <h4 class="mt-2 text-center">Search image to create slider</h4>
+      <h4 class="mt-2 mb-4 text-center">Search image to create slider</h4>
       <div class="form-inline mt-3 d-flex justify-content-center">
-        <div class="input-group col-md-6 mb-2">
+        <div class="input-group col-md-6 mb-2 w-50">
           <input
             type="text"
             class="form-control"
@@ -37,28 +39,42 @@
             placeholder="nature"
           />
         </div>
-        <button type="button" id="search-btn" class="btn btn-primary mb-2">
+        <button type="button" id="search-btn" class="btn btn-primary mb-2 mx-2">
           Search
         </button>
       </div>
+
+      <!-- Search Spinner -->
+      <div
+        id="loading-spinner"
+        class="d-flex justify-content-center mt-5 pt-5 d-none"
+      >
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
       <section class="images">
         <div
-          class="justify-content-around align-items-center mt-3 gallery-header mb-2"
+          class="justify-content-around align-items-center my-4 gallery-header mb-2"
         >
-          <h3 class="head-title text-center">Select image to create slider</h3>
-          <div class="input-group col-md-3 mb-2 mb-md-0">
+          <h3 class="head-title text-center mx-2">
+            Select image to create slider
+          </h3>
+          <div class="input-group col-md-3 mb-2 mb-md-0 w-50">
             <input
               class="form-control"
               id="duration"
               placeholder="slider change duration"
             />
           </div>
-          <button id="create-slider" class="btn btn-primary px-5">
+          <button id="create-slider" class="btn btn-primary px-5 mx-2">
             Create slider
           </button>
         </div>
-        <div class="row gallery"></div>
+        <div class="row gallery my-5"></div>
       </section>
+
       <!-- slider -->
       <div class="main">
         <section class="mt-5" id="sliders"></section>
@@ -70,6 +86,14 @@
         </div>
       </div>
     </div>
+
+    <!-- Bootstrap Script -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+
     <!-- Optional JavaScript -->
     <script src="./app.js"></script>
   </body>
